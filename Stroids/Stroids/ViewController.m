@@ -14,6 +14,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Test loggers
+    DDLogError(@"This is an error");
+    DDLogWarn(@"This is a warning");
+    DDLogInfo(@"This is an info message");
+    DDLogVerbose(@"This is a verbose message");
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;

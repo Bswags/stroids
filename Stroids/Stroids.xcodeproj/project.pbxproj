@@ -25,6 +25,16 @@
 		E178DC0D18A46D3F001275DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E178DBE518A46D3F001275DF /* UIKit.framework */; };
 		E178DC1518A46D3F001275DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E178DC1318A46D3F001275DF /* InfoPlist.strings */; };
 		E178DC1718A46D3F001275DF /* StroidsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC1618A46D3F001275DF /* StroidsTests.m */; };
+		E178DC3718A46DB7001275DF /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC2318A46DB7001275DF /* CLIColor.m */; };
+		E178DC3818A46DB7001275DF /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC2518A46DB7001275DF /* DDAbstractDatabaseLogger.m */; };
+		E178DC3918A46DB7001275DF /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC2718A46DB7001275DF /* DDASLLogger.m */; };
+		E178DC3A18A46DB7001275DF /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC2918A46DB7001275DF /* DDFileLogger.m */; };
+		E178DC3B18A46DB7001275DF /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC2C18A46DB7001275DF /* DDLog.m */; };
+		E178DC3C18A46DB7001275DF /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC2E18A46DB7001275DF /* DDTTYLogger.m */; };
+		E178DC3D18A46DB7001275DF /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC3118A46DB7001275DF /* DDContextFilterLogFormatter.m */; };
+		E178DC3E18A46DB7001275DF /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC3318A46DB7001275DF /* DDDispatchQueueLogFormatter.m */; };
+		E178DC3F18A46DB7001275DF /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC3518A46DB7001275DF /* DDMultiFormatter.m */; };
+		E178DC4018A46DB7001275DF /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = E178DC3618A46DB7001275DF /* README.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +72,26 @@
 		E178DC1218A46D3F001275DF /* StroidsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StroidsTests-Info.plist"; sourceTree = "<group>"; };
 		E178DC1418A46D3F001275DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E178DC1618A46D3F001275DF /* StroidsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StroidsTests.m; sourceTree = "<group>"; };
+		E178DC2218A46DB7001275DF /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
+		E178DC2318A46DB7001275DF /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
+		E178DC2418A46DB7001275DF /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		E178DC2518A46DB7001275DF /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		E178DC2618A46DB7001275DF /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		E178DC2718A46DB7001275DF /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		E178DC2818A46DB7001275DF /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		E178DC2918A46DB7001275DF /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		E178DC2A18A46DB7001275DF /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		E178DC2B18A46DB7001275DF /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		E178DC2C18A46DB7001275DF /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		E178DC2D18A46DB7001275DF /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		E178DC2E18A46DB7001275DF /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		E178DC3018A46DB7001275DF /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		E178DC3118A46DB7001275DF /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		E178DC3218A46DB7001275DF /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		E178DC3318A46DB7001275DF /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		E178DC3418A46DB7001275DF /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		E178DC3518A46DB7001275DF /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		E178DC3618A46DB7001275DF /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +153,7 @@
 		E178DBE918A46D3F001275DF /* Stroids */ = {
 			isa = PBXGroup;
 			children = (
+				E178DC2018A46DB7001275DF /* Lumberjack */,
 				E178DBF218A46D3F001275DF /* AppDelegate.h */,
 				E178DBF318A46D3F001275DF /* AppDelegate.m */,
 				E178DBF518A46D3F001275DF /* Main_iPhone.storyboard */,
@@ -165,6 +196,49 @@
 				E178DC1318A46D3F001275DF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E178DC2018A46DB7001275DF /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				E178DC2118A46DB7001275DF /* CLI */,
+				E178DC2418A46DB7001275DF /* DDAbstractDatabaseLogger.h */,
+				E178DC2518A46DB7001275DF /* DDAbstractDatabaseLogger.m */,
+				E178DC2618A46DB7001275DF /* DDASLLogger.h */,
+				E178DC2718A46DB7001275DF /* DDASLLogger.m */,
+				E178DC2818A46DB7001275DF /* DDFileLogger.h */,
+				E178DC2918A46DB7001275DF /* DDFileLogger.m */,
+				E178DC2A18A46DB7001275DF /* DDLog+LOGV.h */,
+				E178DC2B18A46DB7001275DF /* DDLog.h */,
+				E178DC2C18A46DB7001275DF /* DDLog.m */,
+				E178DC2D18A46DB7001275DF /* DDTTYLogger.h */,
+				E178DC2E18A46DB7001275DF /* DDTTYLogger.m */,
+				E178DC2F18A46DB7001275DF /* Extensions */,
+			);
+			path = Lumberjack;
+			sourceTree = "<group>";
+		};
+		E178DC2118A46DB7001275DF /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				E178DC2218A46DB7001275DF /* CLIColor.h */,
+				E178DC2318A46DB7001275DF /* CLIColor.m */,
+			);
+			path = CLI;
+			sourceTree = "<group>";
+		};
+		E178DC2F18A46DB7001275DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E178DC3018A46DB7001275DF /* DDContextFilterLogFormatter.h */,
+				E178DC3118A46DB7001275DF /* DDContextFilterLogFormatter.m */,
+				E178DC3218A46DB7001275DF /* DDDispatchQueueLogFormatter.h */,
+				E178DC3318A46DB7001275DF /* DDDispatchQueueLogFormatter.m */,
+				E178DC3418A46DB7001275DF /* DDMultiFormatter.h */,
+				E178DC3518A46DB7001275DF /* DDMultiFormatter.m */,
+				E178DC3618A46DB7001275DF /* README.txt */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +321,7 @@
 				E178DC0418A46D3F001275DF /* Images.xcassets in Resources */,
 				E178DBFA18A46D3F001275DF /* Main_iPad.storyboard in Resources */,
 				E178DBF718A46D3F001275DF /* Main_iPhone.storyboard in Resources */,
+				E178DC4018A46DB7001275DF /* README.txt in Resources */,
 				E178DBEE18A46D3F001275DF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,9 +342,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E178DC0018A46D3F001275DF /* MyScene.m in Sources */,
+				E178DC3C18A46DB7001275DF /* DDTTYLogger.m in Sources */,
+				E178DC3A18A46DB7001275DF /* DDFileLogger.m in Sources */,
+				E178DC3D18A46DB7001275DF /* DDContextFilterLogFormatter.m in Sources */,
 				E178DBFD18A46D3F001275DF /* ViewController.m in Sources */,
+				E178DC3818A46DB7001275DF /* DDAbstractDatabaseLogger.m in Sources */,
 				E178DBF418A46D3F001275DF /* AppDelegate.m in Sources */,
+				E178DC3F18A46DB7001275DF /* DDMultiFormatter.m in Sources */,
+				E178DC3718A46DB7001275DF /* CLIColor.m in Sources */,
+				E178DC3B18A46DB7001275DF /* DDLog.m in Sources */,
+				E178DC3918A46DB7001275DF /* DDASLLogger.m in Sources */,
 				E178DBF018A46D3F001275DF /* main.m in Sources */,
+				E178DC3E18A46DB7001275DF /* DDDispatchQueueLogFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
+#import "DDFileLogger.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Configure CocoaLumberjack loggers
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor greenColor] backgroundColor:nil forFlag:LOG_FLAG_INFO];
+    
     return YES;
 }
 							
