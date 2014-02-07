@@ -24,6 +24,9 @@ static inline CGPoint CGPointScale(const CGPoint a, const CGFloat b) {
 SKSpriteNode *ship;
 SKAction *actionMoveLeft;
 SKAction *actionMoveRight;
+NSTimeInterval _lastUpdateTime;
+NSTimeInterval _dt;
+NSTimeInterval _lastMissileTime;
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -61,7 +64,7 @@ SKAction *actionMoveRight;
     SKSpriteNode *ship = [SKSpriteNode new];
     ship = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship.png"];
     [ship setScale:0.25];
-    ship.zRotation = -M_PI / 2;
+    //ship.zRotation = -M_PI / 2;
     
     // Add the fizzicks
     ship.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ship.size];
@@ -83,15 +86,35 @@ SKAction *actionMoveRight;
 -(void)initializeBackground {
     for (int i = 0; i < 2; i++) {
         SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"bg.png"];
-        bg.position = CGPointMake(i * bg.size.width, 0);
+        bg.position = CGPointMake(0, i * bg.size.height);
         bg.anchorPoint = CGPointZero;
         bg.name = @"bg";
         [self addChild:bg];
     }
 }
 
+-(void)moveBackground {
+    [self enumerateChildNodesWithName:@"bg" usingBlock: ^(SKNode *node, BOOL *stop) {
+        SKSpriteNode *bg = (SKSpriteNode *)node;
+        CGPoint bgVelocity = CGPointMake(0, -BG_VELOCITY);
+        CGPoint amountToMove = CGPointScale(bgVelocity, _dt);
+        bg.position = CGPointAdd(bg.position, amountToMove);
+        
+        // If the bg node is off the screen, place it at the top
+        if (bg.position.y <= -bg.size.height)
+            bg.position = CGPointMake(bg.position.x, bg.position.y + bg.size.height*2);
+    }];
+}
+
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    if (_lastUpdateTime)
+        _dt = currentTime - _lastUpdateTime;
+    else
+        _dt = 0;
+    _lastUpdateTime = currentTime;
+    
+    [self moveBackground];
 }
 
 @end
