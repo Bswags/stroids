@@ -12,6 +12,8 @@ static const uint32_t shipCategory = 0x1 << 0;
 static const uint32_t obstacleCategory = 0x1 << 1;
 
 static const float BG_VELOCITY = 100.0;
+static const float OBJECT_VELOCITY = 160.0;
+
 static inline CGPoint CGPointAdd(const CGPoint a, const CGPoint b) {
     return CGPointMake(a.x + b.x, a.y + b.y);
 }
@@ -26,9 +28,10 @@ SKAction *actionMoveLeft;
 SKAction *actionMoveRight;
 NSTimeInterval _lastUpdateTime;
 NSTimeInterval _dt;
-NSTimeInterval _lastMissileTime;
+NSTimeInterval _lastMissileAdded;
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
+    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
@@ -41,9 +44,11 @@ NSTimeInterval _lastMissileTime;
         
     }
     return self;
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
     /* Called when a touch begins */
     
     UITouch *touch = [touches anyObject];
@@ -60,6 +65,7 @@ NSTimeInterval _lastMissileTime;
 }
 
 -(void)addShip {
+    
     // Initialize spaceship
     SKSpriteNode *ship = [SKSpriteNode new];
     ship = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship.png"];
@@ -81,9 +87,52 @@ NSTimeInterval _lastMissileTime;
     // Create actions
     actionMoveLeft = [SKAction moveByX:0 y:30 duration:0.2];
     actionMoveRight = [SKAction moveByX:0 y:-30 duration:0.2];
+    
+}
+
+-(void)addMissile {
+    
+    // Initialize missile
+    SKSpriteNode *missile;
+    missile = [SKSpriteNode spriteNodeWithImageNamed:@"missile.png"];
+    [missile setScale:0.15];
+    missile.zRotation = M_PI / 2;
+    
+    // Add physics
+    missile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:missile.size];
+    missile.physicsBody.categoryBitMask = obstacleCategory;
+    missile.physicsBody.dynamic = YES;
+    missile.physicsBody.contactTestBitMask = shipCategory;
+    missile.physicsBody.collisionBitMask = 0;
+    missile.physicsBody.usesPreciseCollisionDetection = YES;
+    missile.name = @"missile";
+    
+    // Select random x position for missile
+    int r = arc4random() % lrintf(self.frame.size.width);
+    missile.position = CGPointMake(r, self.frame.size.height + 20);
+    [self addChild:missile];
+    
+}
+
+-(void)moveObstacle {
+    
+    NSArray *nodes = self.children;
+    
+    for (SKNode *node in nodes) {
+        if ([node.name isEqual:@"missile"]) {
+            SKSpriteNode *obst = (SKSpriteNode *)node;
+            CGPoint obstVelocity = CGPointMake(0, -OBJECT_VELOCITY);
+            CGPoint amountToMove = CGPointScale(obstVelocity, _dt);
+            
+            obst.position = CGPointAdd(obst.position, amountToMove);
+            if (obst.position.y < -100)
+                [obst removeFromParent];
+        }
+    }
 }
 
 -(void)initializeBackground {
+    
     for (int i = 0; i < 2; i++) {
         SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"bg.png"];
         bg.position = CGPointMake(0, i * bg.size.height);
@@ -91,9 +140,11 @@ NSTimeInterval _lastMissileTime;
         bg.name = @"bg";
         [self addChild:bg];
     }
+    
 }
 
 -(void)moveBackground {
+    
     [self enumerateChildNodesWithName:@"bg" usingBlock: ^(SKNode *node, BOOL *stop) {
         SKSpriteNode *bg = (SKSpriteNode *)node;
         CGPoint bgVelocity = CGPointMake(0, -BG_VELOCITY);
@@ -104,17 +155,28 @@ NSTimeInterval _lastMissileTime;
         if (bg.position.y <= -bg.size.height)
             bg.position = CGPointMake(bg.position.x, bg.position.y + bg.size.height*2);
     }];
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    
     /* Called before each frame is rendered */
+    
     if (_lastUpdateTime)
         _dt = currentTime - _lastUpdateTime;
     else
         _dt = 0;
+    
     _lastUpdateTime = currentTime;
     
+    if (currentTime - _lastMissileAdded > 1) {
+        _lastMissileAdded = currentTime;
+        [self addMissile];
+    }
+    
     [self moveBackground];
+    [self moveObstacle];
+    
 }
 
 @end
