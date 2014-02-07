@@ -35,6 +35,9 @@
 		E178DC3E18A46DB7001275DF /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC3318A46DB7001275DF /* DDDispatchQueueLogFormatter.m */; };
 		E178DC3F18A46DB7001275DF /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E178DC3518A46DB7001275DF /* DDMultiFormatter.m */; };
 		E178DC4018A46DB7001275DF /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = E178DC3618A46DB7001275DF /* README.txt */; };
+		E178DC4218A4818C001275DF /* bg_sideways.png in Resources */ = {isa = PBXBuildFile; fileRef = E178DC4118A4818C001275DF /* bg_sideways.png */; };
+		E178DC4418A4819D001275DF /* missile.png in Resources */ = {isa = PBXBuildFile; fileRef = E178DC4318A4819D001275DF /* missile.png */; };
+		E178DC4618A48E9D001275DF /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E178DC4518A48E9D001275DF /* bg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,9 @@
 		E178DC3418A46DB7001275DF /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
 		E178DC3518A46DB7001275DF /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
 		E178DC3618A46DB7001275DF /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		E178DC4118A4818C001275DF /* bg_sideways.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_sideways.png; sourceTree = "<group>"; };
+		E178DC4318A4819D001275DF /* missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missile.png; sourceTree = "<group>"; };
+		E178DC4518A48E9D001275DF /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,9 @@
 				E178DBFE18A46D3F001275DF /* MyScene.h */,
 				E178DBFF18A46D3F001275DF /* MyScene.m */,
 				E178DC0118A46D3F001275DF /* Spaceship.png */,
+				E178DC4518A48E9D001275DF /* bg.png */,
+				E178DC4318A4819D001275DF /* missile.png */,
+				E178DC4118A4818C001275DF /* bg_sideways.png */,
 				E178DC0318A46D3F001275DF /* Images.xcassets */,
 				E178DBEA18A46D3F001275DF /* Supporting Files */,
 			);
@@ -319,8 +328,11 @@
 			files = (
 				E178DC0218A46D3F001275DF /* Spaceship.png in Resources */,
 				E178DC0418A46D3F001275DF /* Images.xcassets in Resources */,
+				E178DC4618A48E9D001275DF /* bg.png in Resources */,
 				E178DBFA18A46D3F001275DF /* Main_iPad.storyboard in Resources */,
 				E178DBF718A46D3F001275DF /* Main_iPhone.storyboard in Resources */,
+				E178DC4418A4819D001275DF /* missile.png in Resources */,
+				E178DC4218A4818C001275DF /* bg_sideways.png in Resources */,
 				E178DC4018A46DB7001275DF /* README.txt in Resources */,
 				E178DBEE18A46D3F001275DF /* InfoPlist.strings in Resources */,
 			);
