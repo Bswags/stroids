@@ -40,7 +40,7 @@ NSTimeInterval _lastMissileAdded;
         [self addShip];
         // Make self delegate of physics world
         self.physicsWorld.gravity = CGVectorMake(0, 0);
-        //self.physicsWorld.contactDelegate = self;
+        self.physicsWorld.contactDelegate = self;
         
     }
     return self;
@@ -50,16 +50,21 @@ NSTimeInterval _lastMissileAdded;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     /* Called when a touch begins */
-    
-    UITouch *touch = [touches anyObject];
-    CGPoint touchLoc = [touch locationInNode:self.scene];
-    
-    if (touchLoc.y > ship.position.y) {
-        if (ship.position.y < 300)
-            [ship runAction:actionMoveLeft];
-    } else {
-        if (ship.position.y > 50)
-            [ship runAction:actionMoveRight];
+    for (UITouch *touch in touches) {
+        CGPoint touchLoc = [touch locationInNode:self.scene];
+        DDLogVerbose(@"Got a touch");
+        DDLogVerbose(@"Loc is: %f, %f", touchLoc.x, touchLoc.y);
+        
+        if (touchLoc.y > ship.position.y) {
+            //if (ship.position.y < 300)
+            DDLogInfo(@"Triggered moveleft");
+                [ship runAction:actionMoveLeft];
+            
+        } else {
+            //if (ship.position.y > 50)
+            DDLogInfo(@"Triggered moveright");
+                [ship runAction:actionMoveRight];
+        }
     }
 
 }
@@ -70,7 +75,6 @@ NSTimeInterval _lastMissileAdded;
     SKSpriteNode *ship = [SKSpriteNode new];
     ship = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship.png"];
     [ship setScale:0.25];
-    //ship.zRotation = -M_PI / 2;
     
     // Add the fizzicks
     ship.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ship.size];
@@ -78,15 +82,16 @@ NSTimeInterval _lastMissileAdded;
     ship.physicsBody.dynamic = YES;
     ship.physicsBody.contactTestBitMask = obstacleCategory;
     ship.physicsBody.collisionBitMask = 0;
+    ship.physicsBody.usesPreciseCollisionDetection = YES;
     ship.name = @"ship";
-    ship.position = CGPointMake(160, 120);
+    ship.position = CGPointMake(100, 100);
     
     // Add ship to scene
     [self addChild:ship];
     
     // Create actions
-    actionMoveLeft = [SKAction moveByX:0 y:30 duration:0.2];
-    actionMoveRight = [SKAction moveByX:0 y:-30 duration:0.2];
+    actionMoveLeft = [SKAction moveByX:-30 y:0 duration:0.2];
+    actionMoveRight = [SKAction moveByX:30 y:0 duration:0.2];
     
 }
 
@@ -155,6 +160,24 @@ NSTimeInterval _lastMissileAdded;
         if (bg.position.y <= -bg.size.height)
             bg.position = CGPointMake(bg.position.x, bg.position.y + bg.size.height*2);
     }];
+    
+}
+
+-(void)didBeginContact:(SKPhysicsContact *)contact {
+    
+    SKPhysicsBody *firstBody, *secondBody;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    
+    if ( (firstBody.categoryBitMask & shipCategory) != 0 &&
+            (secondBody.categoryBitMask & obstacleCategory) != 0 )
+        [ship removeFromParent];
     
 }
 
